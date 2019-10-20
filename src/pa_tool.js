@@ -1,3 +1,5 @@
+const sha1 = require('js-sha1')
+
 let input = process.argv.slice(2)
 input = input.join(' ')
 
