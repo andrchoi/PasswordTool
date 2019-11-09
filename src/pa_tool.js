@@ -40,14 +40,20 @@ function analyzeInput(input){
     // let input = process.argv.slice(2);
     // input = input.join(' ');
     
-    if (input === "") {
-        console.log('Error: no input detected. \nUsage: pa_tool.js your_input_here');
-    } else {
-        console.log('Your password is '+input);
+    if (input !== "") {
+        console.log('TODO: remove when done, password is '+input);
         let hash = SHA1(input).toUpperCase();
         console.log(hash);
         getHIBPResponse(hash);
     }
 }
 
-analyzeInput('password')
+let passInput = document.getElementsByTagName('input');
+for (let i = 0; i < passInput.length; i++){
+    let input = passInput[i];
+    if (input.getAttribute('type') === 'password'){
+        input.onblur = function(){
+            analyzeInput(input.value)
+        }
+    }
+}
