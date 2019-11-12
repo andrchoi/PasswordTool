@@ -9,7 +9,7 @@ async function getHIBPResponse(input) {
     try {
         let res = await fetch(url+prefix);
         res = await res.text();
-        console.log(res);
+        //console.log(res);
         isPwned(res, suffix);
     } catch(err) {
         console.log(err);
