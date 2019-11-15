@@ -39,7 +39,6 @@ function isPwned(res, input) {
 function analyzeInput(input){
     // let input = process.argv.slice(2);
     // input = input.join(' ');
-    mutateInput(input);
     
     if (input !== "") {
         console.log('TODO: remove when done, password is '+input);
