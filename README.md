@@ -2,6 +2,7 @@
 
 **Run:** `node pa_tool.js`
 
+**Testing:** https://semantic-ui.com/examples/login.html
 
 ## Resources:
 **Compromised Passwords:** https://www.ncsc.gov.uk/static-assets/documents/PwnedPasswordTop100k.txt
