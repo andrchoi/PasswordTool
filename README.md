@@ -15,3 +15,10 @@
 
 **API:** https://haveibeenpwned.com/API/v3#PwnedPasswords
 
+
+Requirements
+1) Local database of plaintext passwords
+2) Compare similarities between input password and database (define similarities)
+
+Similarities
+1) Use MongoDB text index to compute similarities
