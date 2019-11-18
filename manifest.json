@@ -12,7 +12,7 @@
             ],
             "js": [
                 "src/sha1.js",
-                "src/mutate.js",
+                "src/analyze.js",
                 "src/pa_tool.js"
             ]
         }
