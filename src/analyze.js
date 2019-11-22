@@ -1,5 +1,15 @@
 'use strict';
 
+// function checkRepeats(input) {
+//     let letters = {};
+//     for (let i = 0; i < input.length; i++) {
+//         let char = input.charAt(i);
+//         if (letters[char]) {
+            
+//         }
+//     }
+// }
+
 function checkSingleWord(words) {
     //TODO: check against dictionary
     let dict = ['hello', 'world'];
@@ -21,7 +31,7 @@ function getWords(split, report) {
             if (/^[A-Za-z]+$/.test(part)) {
                 result.push(part);
                 if (split[i-1] !== '' || (i+1 < split.length && split[i+1] !== '')) {
-                    report.simpleCombo = 'Password is word + number combo';
+                    report.simpleCombo = 'Password is word + special character combo';
                 }
                 console.log(report)
             }
@@ -53,5 +63,5 @@ function analyze(input) {
         })
         report.words = wordAlert;
     }
-    console.log(report);
+    return report;
 }

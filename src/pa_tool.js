@@ -39,7 +39,7 @@ function isPwned(res, input) {
 function analyzeInput(input){
     // let input = process.argv.slice(2);
     // input = input.join(' ');
-    analyze(input);
+    let report = analyze(input);
     
     if (input !== "") {
         console.log('TODO: remove when done, password is '+input);
@@ -47,6 +47,8 @@ function analyzeInput(input){
         console.log(hash);
         getHIBPResponse(hash);
     }
+
+    console.log(report);
 }
 
 let passInput = document.getElementsByTagName('input');
@@ -54,7 +56,7 @@ for (let i = 0; i < passInput.length; i++){
     let input = passInput[i];
     if (input.getAttribute('type') === 'password'){
         input.onblur = function(){
-            analyzeInput(input.value)
+            analyzeInput(input.value);
         }
     }
 }
