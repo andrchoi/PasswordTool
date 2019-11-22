@@ -3,7 +3,13 @@
 const SIZE = '30em'
 
 function showInfo(report) {
+    // Remove existing popup if it exists
+    if (document.getElementById("info-box")) {
+        document.getElementById("info-box").remove();
+    }
+
     let infoBox = document.createElement('div');
+    infoBox.setAttribute("id", "info-box")
     infoBox.className = 'TEAM_AMAZ_PA_TOOL_REPORT';
     infoBox.style.width = SIZE;
     infoBox.style.height = SIZE;
@@ -18,6 +24,26 @@ function showInfo(report) {
     title.textContent = 'Password Analysis Report';
     title.style.textAlign = 'center';
     infoBox.appendChild(title);
+
+    let isCompromised = document.createElement('h3');
+    isCompromised.textContent = 'Compromised: ' + 'true';
+    infoBox.appendChild(isCompromised);
+
+    let simpleReport = document.createElement('h3');
+    simpleReport.textContent = 'Report: ';
+    infoBox.appendChild(simpleReport);
+
+    let passWalk = document.createElement('h3');
+    passWalk.textContent = 'Password walking: ' + 'Your password contains characters that are next to each other on the keyboard';
+    infoBox.appendChild(passWalk);
+
+    var closeBtn = document.createElement("button");
+    closeBtn.setAttribute("id", "close-pass-tool");
+    closeBtn.innerHTML = "Close";             
+    closeBtn.onclick = function() {
+        document.getElementById("info-box").remove();
+    };
+    infoBox.appendChild(closeBtn);
 
     document.body.appendChild(infoBox);
 

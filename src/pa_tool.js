@@ -40,6 +40,7 @@ function analyzeInput(input){
     // let input = process.argv.slice(2);
     // input = input.join(' ');
     let report = analyze(input);
+    let passWalk = getPassWalk(input);
     
     if (input !== "") {
         console.log('TODO: remove when done, password is '+input);
@@ -48,7 +49,7 @@ function analyzeInput(input){
         getHIBPResponse(hash);
     }
 
-    showInfo(report);
+    showInfo(report, passWalk);
 }
 
 let passInput = document.getElementsByTagName('input');
