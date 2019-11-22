@@ -1,14 +1,28 @@
 'use strict';
 
-// function checkRepeats(input) {
-//     let letters = {};
-//     for (let i = 0; i < input.length; i++) {
-//         let char = input.charAt(i);
-//         if (letters[char]) {
-            
-//         }
-//     }
-// }
+function checkRepeats(input) {
+    let repeats = {};
+    let threshold = 0.4;
+
+    for (let i = 0; i < input.length; i++) {
+        for (let size = i+1; size < input.length+1; size++){
+            if ((size-i)/input.length < 1-threshold){
+                let toCheck = input.substring(i, size);
+                console.log(toCheck)
+
+                if (!Object.keys(repeats).includes(toCheck)) {
+                    let count = input.split(toCheck).length-1;
+                    let ratio = (count*toCheck.length)/input.length;
+
+                    if (ratio > threshold && count > 1){
+                        repeats[toCheck] = ratio*100;
+                    }
+                }
+            }
+        }
+    }
+    return repeats;
+}
 
 function checkSingleWord(words) {
     //TODO: check against dictionary
@@ -63,5 +77,9 @@ function analyze(input) {
         })
         report.words = wordAlert;
     }
+
+    let repeats = checkRepeats(input);
+    console.log(repeats);
+
     return report;
 }
