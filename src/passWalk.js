@@ -73,8 +73,6 @@ var mapping = {
     'M': 'hHnNmMjJkK'
 };
 
-var string = 'qwertzxcvbk';
-
 function getPassWalk(pass) {
     var res = [];
 
@@ -103,5 +101,3 @@ function getPassWalk(pass) {
         list: res
     }
 };
-
-getPassWalk(string);
