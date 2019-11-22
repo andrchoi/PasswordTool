@@ -23,6 +23,8 @@ function showInfo(compromised, report, passWalk) {
     let title = document.createElement('h2');
     title.textContent = 'Password Analysis Report';
     title.style.textAlign = 'center';
+    title.style.marginTop = '0px';
+    title.style.paddingBottom = '20px'
     infoBox.appendChild(title);
 
     let isCompromised = document.createElement('h3');
@@ -40,12 +42,14 @@ function showInfo(compromised, report, passWalk) {
     passWalking.textContent = `Password walking: ${passWalk.percentage}%`;
     infoBox.appendChild(passWalking);
     let passWalkDesc = document.createElement('p');
-    passWalkDesc.textContent = `${passWalk.percentage}% of this password contains characters that are next to each other on the keyboard`;
+    passWalkDesc.textContent = `${passWalk.percentage}% of this password contains characters that are next to each other on the keyboard. The lower the better.`;
     infoBox.appendChild(passWalkDesc);
 
     var closeBtn = document.createElement("button");
     closeBtn.setAttribute("id", "close-pass-tool");
-    closeBtn.innerHTML = "Close";             
+    closeBtn.innerHTML = "Close";   
+    closeBtn.style.cssFloat = "right";
+    closeBtn.style.marginTop = "30px";          
     closeBtn.onclick = function() {
         document.getElementById("info-box").remove();
     };
