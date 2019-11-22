@@ -13,7 +13,7 @@ function showInfo(report) {
     infoBox.style.top = '1em';
     infoBox.style.right = '1em';
     infoBox.style.backgroundColor = 'white';
-    infoBox.style.boxShadow = '0 4px 8px 0 rgba(0,0,0,0.2);';
+    infoBox.style.boxShadow = '0 4px 8px 0 rgba(0,0,0,0.2)';
 
     document.body.appendChild(infoBox);
     
