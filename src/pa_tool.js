@@ -48,7 +48,7 @@ function analyzeInput(input){
         getHIBPResponse(hash);
     }
 
-    console.log(report);
+    showInfo(report);
 }
 
 let passInput = document.getElementsByTagName('input');
