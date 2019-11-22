@@ -2,7 +2,7 @@
 
 const SIZE = '30em'
 
-function showInfo(report) {
+function showInfo(compromised, report, passWalk) {
     // Remove existing popup if it exists
     if (document.getElementById("info-box")) {
         document.getElementById("info-box").remove();
@@ -26,16 +26,22 @@ function showInfo(report) {
     infoBox.appendChild(title);
 
     let isCompromised = document.createElement('h3');
-    isCompromised.textContent = 'Compromised: ' + 'true';
+    isCompromised.textContent = 'Compromised: ' + compromised;
     infoBox.appendChild(isCompromised);
+    let compromisedDesc = document.createElement('p');
+    compromisedDesc.textContent = `This password has ${compromised ? '' : 'not'} been compromised`;
+    infoBox.appendChild(compromisedDesc);
 
     let simpleReport = document.createElement('h3');
     simpleReport.textContent = 'Report: ';
     infoBox.appendChild(simpleReport);
 
-    let passWalk = document.createElement('h3');
-    passWalk.textContent = 'Password walking: ' + 'Your password contains characters that are next to each other on the keyboard';
-    infoBox.appendChild(passWalk);
+    let passWalking = document.createElement('h3');
+    passWalking.textContent = `Password walking: ${passWalk.percentage}%`;
+    infoBox.appendChild(passWalking);
+    let passWalkDesc = document.createElement('p');
+    passWalkDesc.textContent = `${passWalk.percentage}% of this password contains characters that are next to each other on the keyboard`;
+    infoBox.appendChild(passWalkDesc);
 
     var closeBtn = document.createElement("button");
     closeBtn.setAttribute("id", "close-pass-tool");
@@ -46,6 +52,4 @@ function showInfo(report) {
     infoBox.appendChild(closeBtn);
 
     document.body.appendChild(infoBox);
-
-    console.log(report);
 }
