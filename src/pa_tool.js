@@ -59,5 +59,14 @@ for (let i = 0; i < passInput.length; i++){
         input.onblur = function(){
             analyzeInput(input.value);
         }
+
+        // Show tool after user stops typing for 500ms
+        let timeout = null;
+        input.onkeyup = function (e) {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                analyzeInput(input.value)
+            }, 500);
+        };
     }
 }
