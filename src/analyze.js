@@ -31,8 +31,10 @@ function checkRepeats(input) {
 
                     if (ratio > threshold && count > 1){
                         
-                        repeats[toCheck] = ratio*100;
+                        repeats[toCheck] = (ratio*100).toFixed(2);
                         if (repeats[toCheck] === 100) {
+                            let repeats = {};
+                            repeats[toCheck] = 100;
                             return repeats;
                         }
                     }
@@ -62,16 +64,23 @@ function getWords(split, report) {
     if (split.length > 1){
         for (let i = 0; i < split.length; i++) {
             let part = split[i];
-            if (/^[A-Za-z]+$/.test(part)) {
+            if (/^[A-Za-z]+$/.test(part) && part.length > 2) {
                 result.push(part);
-                if (split[i-1] !== '' || (i+1 < split.length && split[i+1] !== '')) {
-                    report.simpleCombo = 'Password is word + special character combo';
+                if (split[i-1] !== '' || (i+1 < split.length && split[i+1] !== '') && split.length <= 5) {
+                    report.simpleCombo = 'Word and special character combination';
                 }
-                console.log(report)
             }
         }
     }
     return result;
+}
+
+function checkLength(input) {
+    let len = '';
+    if (input.length < 8) {
+        len = 'Password is very short.';
+    }
+    return len;
 }
 
 function analyze(input) {
@@ -79,19 +88,24 @@ function analyze(input) {
     
     let split = input.split(/([A-Za-z]+)/);
 
+    let len = checkLength(input);
+    if (len !== '') {
+        report.pwlength = len;
+    }
+
     console.log(split);
     let words = getWords(split, report);
     console.log(words)
     if (words.length === 0) {
-        report.letters = 'Password has no letters';
+        report.letters = 'Password has no letters.';
     }
     else if (split.length === 3 && split[0] === '' && split[split.length-1] === '') {
-        report.letters = 'Password is only letters'
+        report.letters = 'Password is only letters.'
     }
 
     let validWords = checkSingleWord(words);
     if (validWords.length > 0) {
-        let wordAlert = 'Password contains actual words:';
+        let wordAlert = 'Contains actual words:';
         validWords.forEach(function (w) {
             wordAlert += ' '+ w;
         })
@@ -103,5 +117,6 @@ function analyze(input) {
         report.patterns = repeats;
     }
 
+    console.log(report)
     return report;
 }
