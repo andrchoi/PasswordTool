@@ -38,8 +38,9 @@ function isPwned(res, input, pass) {
 function analyzeAndDisplay(compromised, input) {
     const report = analyze(input);
     const passWalk = getPassWalk(input);
+    report.passWalk = passWalk;
 
-    showInfo(compromised, report, passWalk);
+    showInfo(compromised, report);
 }
 
 function analyzeInput(input){

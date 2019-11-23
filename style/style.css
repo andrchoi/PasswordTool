@@ -9,6 +9,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#TEAM_AMAZ_PW_TOOL_INFOBOX .comp_false {
+    color: rgb(42, 140, 35);
+}
+
+#TEAM_AMAZ_PW_TOOL_INFOBOX .comp_true {
+    color: rgb(194, 21, 21);
+}
+
 #TEAM_AMAZ_PW_TOOL_INFOBOX .title{
     text-align: center;
     margin-top: 0;
