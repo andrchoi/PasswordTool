@@ -18,7 +18,7 @@
                 "src/pa_tool.js"
             ],
             "css": [
-                "src/style.css"
+                "style/style.css"
             ]
         }
     ],
