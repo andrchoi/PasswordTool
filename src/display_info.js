@@ -2,8 +2,14 @@
 
 const SIZE = '30em'
 
-function showInfo(report) {
+function showInfo(compromised, report, passWalk) {
+    // Remove existing popup if it exists
+    if (document.getElementById("info-box")) {
+        document.getElementById("info-box").remove();
+    }
+
     let infoBox = document.createElement('div');
+    infoBox.setAttribute("id", "info-box")
     infoBox.className = 'TEAM_AMAZ_PA_TOOL_REPORT';
     infoBox.style.width = SIZE;
     infoBox.style.height = SIZE;
@@ -17,9 +23,37 @@ function showInfo(report) {
     let title = document.createElement('h2');
     title.textContent = 'Password Analysis Report';
     title.style.textAlign = 'center';
+    title.style.marginTop = '0px';
+    title.style.paddingBottom = '20px'
     infoBox.appendChild(title);
 
-    document.body.appendChild(infoBox);
+    let isCompromised = document.createElement('h3');
+    isCompromised.textContent = 'Compromised: ' + compromised;
+    infoBox.appendChild(isCompromised);
+    let compromisedDesc = document.createElement('p');
+    compromisedDesc.textContent = `This password has ${compromised ? '' : 'not'} been compromised`;
+    infoBox.appendChild(compromisedDesc);
 
-    console.log(report);
+    let simpleReport = document.createElement('h3');
+    simpleReport.textContent = 'Report: ';
+    infoBox.appendChild(simpleReport);
+
+    let passWalking = document.createElement('h3');
+    passWalking.textContent = `Password walking: ${passWalk.percentage}%`;
+    infoBox.appendChild(passWalking);
+    let passWalkDesc = document.createElement('p');
+    passWalkDesc.textContent = `${passWalk.percentage}% of this password contains characters that are next to each other on the keyboard. The lower the better.`;
+    infoBox.appendChild(passWalkDesc);
+
+    var closeBtn = document.createElement("button");
+    closeBtn.setAttribute("id", "close-pass-tool");
+    closeBtn.innerHTML = "Close";   
+    closeBtn.style.cssFloat = "right";
+    closeBtn.style.marginTop = "30px";          
+    closeBtn.onclick = function() {
+        document.getElementById("info-box").remove();
+    };
+    infoBox.appendChild(closeBtn);
+
+    document.body.appendChild(infoBox);
 }
