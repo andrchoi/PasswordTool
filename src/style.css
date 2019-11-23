@@ -1,0 +1,27 @@
+#TEAM_AMAZ_PW_TOOL_INFOBOX{
+    background-color: white;
+    width: 30em;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#TEAM_AMAZ_PW_TOOL_INFOBOX .title{
+    text-align: center;
+    margin-top: 0;
+    padding-bottom: 1em;
+}
+
+#TEAM_AMAZ_PW_TOOL_INFOBOX h1, 
+#TEAM_AMAZ_PW_TOOL_INFOBOX h2, 
+#TEAM_AMAZ_PW_TOOL_INFOBOX h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#TEAM_AMAZ_PW_TOOL_INFOBOX button {
+    float: right;
+    margin-top: 2em;
+}

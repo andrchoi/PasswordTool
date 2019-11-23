@@ -16,6 +16,9 @@
                 "src/passWalk.js",
                 "src/analyze.js",
                 "src/pa_tool.js"
+            ],
+            "css": [
+                "src/style.css"
             ]
         }
     ],
