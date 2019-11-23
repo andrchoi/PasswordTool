@@ -1,5 +1,21 @@
 'use strict';
 
+function filterPatterns(repeats) {
+    for (let pattern in repeats) {
+        let cyc = pattern+pattern;
+        for (let key in repeats) {
+            if (key !== pattern) {
+                if (key.split(pattern).length-1 === key.length && repeats[key] <= repeats[pattern]) {
+                    delete repeats[key];
+                } 
+                else if (pattern.length > 1 && cyc.includes(key) && repeats[key] <= repeats[pattern]) {
+                    delete repeats[key];
+                }
+            }
+        }
+    }
+}
+
 function checkRepeats(input) {
     let repeats = {};
     let threshold = 0.4;
@@ -8,19 +24,23 @@ function checkRepeats(input) {
         for (let size = i+1; size < input.length+1; size++){
             if ((size-i)/input.length < 1-threshold){
                 let toCheck = input.substring(i, size);
-                console.log(toCheck)
 
                 if (!Object.keys(repeats).includes(toCheck)) {
                     let count = input.split(toCheck).length-1;
                     let ratio = (count*toCheck.length)/input.length;
 
                     if (ratio > threshold && count > 1){
+                        
                         repeats[toCheck] = ratio*100;
+                        if (repeats[toCheck] === 100) {
+                            return repeats;
+                        }
                     }
                 }
             }
         }
     }
+    filterPatterns(repeats);
     return repeats;
 }
 
@@ -79,7 +99,9 @@ function analyze(input) {
     }
 
     let repeats = checkRepeats(input);
-    console.log(repeats);
+    if (Object.keys(repeats).length > 0) {
+        report.patterns = repeats;
+    }
 
     return report;
 }
