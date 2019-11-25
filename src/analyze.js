@@ -32,7 +32,7 @@ function checkRepeats(input) {
                     if (ratio > threshold && count > 1){
                         
                         repeats[toCheck] = (ratio*100).toFixed(2);
-                        if (repeats[toCheck] === 100) {
+                        if (repeats[toCheck] === "100.00") {
                             let repeats = {};
                             repeats[toCheck] = 100;
                             return repeats;
