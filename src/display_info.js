@@ -86,7 +86,7 @@ function showInfo(compromised, report) {
     closeBtn.setAttribute("id", "close-pass-tool");
     closeBtn.innerHTML = "Close";           
     closeBtn.onclick = function() {
-        document.getElementById("info-box").remove();
+        document.getElementById(INFOBOX_ID).remove();
     };
     infoBox.appendChild(closeBtn);
 
