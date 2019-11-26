@@ -81,7 +81,7 @@ function showInfo(compromised, report) {
     compromisedDesc.textContent = `This password has ${compromised ? '' : 'not'} been compromised.`;
     infoBox.appendChild(compromisedDesc);
 
-    if (Object.keys.report) {
+    if (Object.keys(report).length > 1) {
         let simpleReport = document.createElement('h3');
         simpleReport.textContent = 'Report: ';
         infoBox.appendChild(simpleReport);
