@@ -17,7 +17,7 @@ function createHTMLReport(report) {
         else if (key === 'letters') {
             text = document.createTextNode(' Better passwords contain a variety of character types.')
         }
-        else if (key === 'wordAlert') {
+        else if (key === 'words') {
             text = document.createTextNode(' Real words are vulnerable to dictionary attacks.')
         }
         else if (key === 'simpleCombo') {

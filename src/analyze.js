@@ -67,7 +67,7 @@ function getWords(split, report) {
             if (/^[A-Za-z]+$/.test(part) && part.length > 2) {
                 result.push(part);
                 if (split[i-1] !== '' || (i+1 < split.length && split[i+1] !== '') && split.length <= 5) {
-                    report.simpleCombo = 'Word and special character combination';
+                    report.simpleCombo = 'Word and special character combination.';
                 }
             }
         }
@@ -109,7 +109,7 @@ function analyze(input) {
         validWords.forEach(function (w) {
             wordAlert += ' '+ w;
         })
-        report.words = wordAlert;
+        report.words = wordAlert + '.';
     }
 
     let repeats = checkRepeats(input);
