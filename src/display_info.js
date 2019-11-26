@@ -38,8 +38,13 @@ function createHTMLReport(report) {
             text.appendChild(info);
         }
         else if (key === 'passWalk') {
-            summary.textContent = 'Password Walking:'
-            text = document.createTextNode(` ${report[key].percentage}% of this password contains characters that are next to each other on the keyboard. The lower the better.`)
+            if (report[key].percentage > 40) {
+                summary.textContent = 'Password Walking:'
+                text = document.createTextNode(` ${report[key].percentage}% of this password contains characters that are next to each other on the keyboard. The lower the better.`)
+            } else {
+                summary.textContent = '';
+                text = document.createTextNode('')
+            }
         }
         
         section.appendChild(summary);
@@ -73,14 +78,16 @@ function showInfo(compromised, report) {
     isCompromised.setAttribute('class','comp_'+compromised);
     infoBox.appendChild(isCompromised);
     let compromisedDesc = document.createElement('p');
-    compromisedDesc.textContent = `This password has ${compromised ? '' : 'not'} been compromised`;
+    compromisedDesc.textContent = `This password has ${compromised ? '' : 'not'} been compromised.`;
     infoBox.appendChild(compromisedDesc);
 
-    let simpleReport = document.createElement('h3');
-    simpleReport.textContent = 'Report: ';
-    infoBox.appendChild(simpleReport);
+    if (Object.keys.report) {
+        let simpleReport = document.createElement('h3');
+        simpleReport.textContent = 'Report: ';
+        infoBox.appendChild(simpleReport);
 
-    infoBox.appendChild(createHTMLReport(report));
+        infoBox.appendChild(createHTMLReport(report));
+    }
 
     var closeBtn = document.createElement("button");
     closeBtn.setAttribute("id", "close-pass-tool");
