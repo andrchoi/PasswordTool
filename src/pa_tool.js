@@ -52,17 +52,17 @@ function analyzeInput(input){
     }
 }
 
-let passInput = document.getElementsByTagName('input');
-for (let i = 0; i < passInput.length; i++){
-    let input = passInput[i];
-    if (input.getAttribute('type') === 'password'){
-        // Show tool after user stops typing for 500ms
-        let timeout = null;
-        input.onkeyup = function (e) {
-            clearTimeout(timeout);
-            timeout = setTimeout(function () {
-                analyzeInput(input.value)
-            }, 500);
-        };
+document.addEventListener('click', function (event) {
+    if (event.target.tagName == 'input' ||
+        event.target.tagName == 'INPUT' &&
+        event.target.getAttribute('type') == 'password') {
+            // Show tool after user stops typing for 500ms
+            let timeout = null;
+            input.onkeyup = function (e) {
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    analyzeInput(input.value)
+                }, 500);
+            };
     }
-}
+}, false);
