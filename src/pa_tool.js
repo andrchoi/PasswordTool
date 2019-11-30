@@ -52,16 +52,19 @@ function analyzeInput(input){
     }
 }
 
+var test;
+
 document.addEventListener('click', function (event) {
-    if (event.target.tagName == 'input' ||
-        event.target.tagName == 'INPUT' &&
+    if ((event.target.tagName == 'input' ||
+        event.target.tagName == 'INPUT') &&
         event.target.getAttribute('type') == 'password') {
             // Show tool after user stops typing for 500ms
             let timeout = null;
-            input.onkeyup = function (e) {
+            event.target.onkeyup = function (e) {
                 clearTimeout(timeout);
                 timeout = setTimeout(function () {
-                    analyzeInput(input.value)
+                    console.log('now')
+                    analyzeInput(event.target.value)
                 }, 500);
             };
     }
