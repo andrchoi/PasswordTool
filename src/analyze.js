@@ -48,7 +48,7 @@ function checkRepeats(input) {
 
 function checkSingleWord(words) {
     //TODO: check against dictionary
-    let dict = ['hello', 'world'];
+    let dict = ['hello', 'world', 'password'];
     let ans = [];
 
     words.forEach(function (word) {

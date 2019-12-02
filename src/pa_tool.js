@@ -45,7 +45,6 @@ function analyzeAndDisplay(compromised, input) {
 
 function analyzeInput(input){
     if (input !== "") {
-        console.log('TODO: remove when done, password is '+input);
         let hash = SHA1(input).toUpperCase();
         console.log(hash);
         getHIBPResponse(hash, input);
